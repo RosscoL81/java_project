@@ -62,7 +62,11 @@ class RestaurantserviceApplicationTests {
 		assertEquals(1, found.size());
 	}
 
-
-
-
+	@Test
+	public void canAddRestaurant(){
+		Restaurant restaurant2 = new Restaurant("The Jolly", 700.00, "1200", "2200");
+		restaurantRepository.save(restaurant2);
+		List<Restaurant> found = restaurantRepository.findAll();
+		assertEquals(2, found.size());
+	}
 }
