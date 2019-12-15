@@ -2,6 +2,7 @@ package com.codeclan.example.restaurantservice;
 
 import com.codeclan.example.restaurantservice.models.Customer;
 import com.codeclan.example.restaurantservice.models.Dish;
+import com.codeclan.example.restaurantservice.models.Order;
 import com.codeclan.example.restaurantservice.models.Restaurant;
 import com.codeclan.example.restaurantservice.repositories.CustomerRepository;
 import com.codeclan.example.restaurantservice.repositories.DishRepository;
@@ -52,6 +53,12 @@ class RestaurantserviceApplicationTests {
 	@Test
 	public void canGetDishes(){
 		List<Dish> found = dishRepository.findAll();
+		assertEquals(1, found.size());
+	}
+
+	@Test
+	public void canGetOrders(){
+		List<Order> found = orderRepository.findAll();
 		assertEquals(1, found.size());
 	}
 
