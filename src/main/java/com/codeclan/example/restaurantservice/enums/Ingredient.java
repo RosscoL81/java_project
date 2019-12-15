@@ -6,7 +6,8 @@ public enum Ingredient {
     BROWNRICE(150, true),
     SAUSAGE(100, false),
     ASPARAGUS(75, true),
-    POTATOES(100, true);
+    POTATOES(100, true),
+    BAMBOOSHOOTS(150, true);
 
     private final int price;
     private final boolean vegetarianFriendly;
