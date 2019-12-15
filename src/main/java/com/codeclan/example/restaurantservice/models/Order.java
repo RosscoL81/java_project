@@ -36,13 +36,15 @@ public class Order {
 
 
     public Order(double price, String collectionTime, Customer customer, Restaurant restaurant, boolean collected) {
-        this.price = price;
+        this.price = 0;
         this.collectionTime = collectionTime;
         this.customer = customer;
         this.restaurant = restaurant;
         this.dishes = new ArrayList<>();
         this.collected = collected;
     }
+
+    public Order(){}
 
     public Long getId() {
         return id;
@@ -58,6 +60,14 @@ public class Order {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void calculatePrice(){
+        double total = 0;
+        for(Dish dish : dishes){
+            total += dish.getPrice();
+        }
+        this.price = total;
     }
 
     public String getCollectionTime() {

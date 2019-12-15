@@ -1,7 +1,9 @@
 package com.codeclan.example.restaurantservice.models;
 
-import com.codeclan.example.restaurantservice.enums.Ingredients;
+import com.codeclan.example.restaurantservice.enums.Ingredient;
+import com.codeclan.example.restaurantservice.enums.SpiceLevel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,16 +20,27 @@ public class Dish {
     private String name;
     @Column(name = "price")
     private double price;
-    @JsonIgnore
-    @OneToMany(mappedBy = "dish")
-    private List<Ingredients> ingredients;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "dish")
+    @Column(name = "ingredients")
+    private Ingredient ingredients;
+    @Column(name = "spice_level")
+    private SpiceLevel spiceLevel;
+    @JsonIgnoreProperties("dish")
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
 
-    public Dish(String name, double price) {
+    public Dish(String name, double price, SpiceLevel spiceLevel, Order order, Ingredient ingredients) {
         this.name = name;
         this.price = price;
-        this.ingredients = new ArrayList<>();
+        this.ingredients = ingredients;
+        this.spiceLevel = spiceLevel;
+        this.order = order;
     }
+
+    public Dish(){}
 
     public Long getId() {
         return Id;
@@ -45,11 +58,11 @@ public class Dish {
         this.name = name;
     }
 
-    public List<Ingredients> getIngredients() {
+    public Ingredient getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredients> ingredients) {
+    public void setIngredients(Ingredient ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -59,5 +72,21 @@ public class Dish {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public SpiceLevel getSpiceLevel() {
+        return spiceLevel;
+    }
+
+    public void setSpiceLevel(SpiceLevel spiceLevel) {
+        this.spiceLevel = spiceLevel;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

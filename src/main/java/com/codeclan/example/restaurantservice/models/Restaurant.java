@@ -38,6 +38,8 @@ public class Restaurant {
         this.orders = new ArrayList<>();
     }
 
+    public Restaurant(){}
+
     public Long getId() {
         return Id;
     }

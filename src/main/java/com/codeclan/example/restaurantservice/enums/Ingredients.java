@@ -1,4 +1,0 @@
-package com.codeclan.example.restaurantservice.enums;
-
-public enum Ingredients {
-}

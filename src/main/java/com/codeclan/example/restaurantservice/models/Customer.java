@@ -1,5 +1,6 @@
 package com.codeclan.example.restaurantservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
@@ -17,16 +18,22 @@ public class Customer {
     @Column(name = "name")
     private String name;
     @Column(name = "wallet")
-    private int wallet;
+    private double wallet;
     @JsonIgnore
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Order> orders;
+    @JsonIgnoreProperties("customer")
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private Restaurant restaurant;
 
-    public Customer(String name, int wallet) {
+    public Customer(String name, int wallet, Restaurant restaurant) {
         this.name = name;
         this.wallet = wallet;
         this.orders = new ArrayList<>();
+        this.restaurant = restaurant;
     }
+    public Customer(){}
 
     public Long getId() {
         return id;
@@ -44,11 +51,11 @@ public class Customer {
         this.name = name;
     }
 
-    public int getWallet() {
+    public double getWallet() {
         return wallet;
     }
 
-    public void setWallet(int wallet) {
+    public void setWallet(double wallet) {
         this.wallet = wallet;
     }
 
@@ -58,5 +65,13 @@ public class Customer {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }
