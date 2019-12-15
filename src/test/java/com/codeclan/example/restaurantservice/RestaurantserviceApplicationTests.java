@@ -79,4 +79,16 @@ class RestaurantserviceApplicationTests {
 		List<Customer> found = customerRepository.findAll();
 		assertEquals(2, found.size());
 	}
+
+	@Test
+	public void canAddOrder(){
+		Restaurant restaurant2 = new Restaurant("The Jolly", 700.00, "1200", "2200");
+		restaurantRepository.save(restaurant2);
+		Customer customer2 = new Customer("Iona", 4000, restaurant2);
+		customerRepository.save(customer2);
+		Order order1 = new Order(0, "1500", customer2, restaurant2, false);
+		orderRepository.save(order1);
+		List<Order> found = orderRepository.findAll();
+		assertEquals(2, found.size());
+	}
 }
