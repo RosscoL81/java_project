@@ -1,6 +1,5 @@
 package com.codeclan.example.restaurantservice;
 
-import com.codeclan.example.restaurantservice.enums.Ingredient;
 import com.codeclan.example.restaurantservice.enums.SpiceLevel;
 import com.codeclan.example.restaurantservice.models.Customer;
 import com.codeclan.example.restaurantservice.models.Dish;
@@ -122,7 +121,7 @@ class RestaurantserviceApplicationTests {
 		}
 		Order order1 = new Order(0, customer2, date, restaurant2, false);
 		orderRepository.save(order1);
-		Dish dish1 = new Dish("Bean Curry", 7.00, SpiceLevel.MEDIUM, order1, Ingredient.BAMBOOSHOOTS);
+		Dish dish1 = new Dish("Bean Curry", 7.00, SpiceLevel.MEDIUM, order1);
 		dishRepository.save(dish1);
 		List<Dish> found = dishRepository.findAll();
 		assertEquals(2, found.size());

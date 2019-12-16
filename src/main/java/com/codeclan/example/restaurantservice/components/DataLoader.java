@@ -1,15 +1,8 @@
 package com.codeclan.example.restaurantservice.components;
 
-import com.codeclan.example.restaurantservice.enums.Ingredient;
 import com.codeclan.example.restaurantservice.enums.SpiceLevel;
-import com.codeclan.example.restaurantservice.models.Customer;
-import com.codeclan.example.restaurantservice.models.Dish;
-import com.codeclan.example.restaurantservice.models.Order;
-import com.codeclan.example.restaurantservice.models.Restaurant;
-import com.codeclan.example.restaurantservice.repositories.CustomerRepository;
-import com.codeclan.example.restaurantservice.repositories.DishRepository;
-import com.codeclan.example.restaurantservice.repositories.OrderRepository;
-import com.codeclan.example.restaurantservice.repositories.RestaurantRepository;
+import com.codeclan.example.restaurantservice.models.*;
+import com.codeclan.example.restaurantservice.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -35,6 +28,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     RestaurantRepository restaurantRepository;
 
+    @Autowired
+    IngredientRepository ingredientRepository;
+
     public DataLoader(){}
 
     public void run(ApplicationArguments args){
@@ -48,6 +44,12 @@ public class DataLoader implements ApplicationRunner {
             e.printStackTrace();
         }
 
+        Ingredient ingredient1 = new Ingredient("sausage", 5.00, false);
+        ingredientRepository.save(ingredient1);
+
+        Ingredient ingredient2 = new Ingredient("whiteRice", 1.50, true);
+        ingredientRepository.save(ingredient2);
+
         Restaurant restaurant1 = new Restaurant("Cari House", 400.00, "1000", "2300");
         restaurantRepository.save(restaurant1);
 
@@ -57,7 +59,12 @@ public class DataLoader implements ApplicationRunner {
         Order order1 = new Order(0, customer1, date, restaurant1, true);
         orderRepository.save(order1);
 
-        Dish dish1 = new Dish("Sausage Curry", 5.00, SpiceLevel.VERYHOT, order1, Ingredient.ASPARAGUS);
+        Dish dish1 = new Dish("Sausage Curry", 5.00, SpiceLevel.VERYHOT, order1);
         dishRepository.save(dish1);
+        dish1.addIngredients(ingredient1);
+        dish1.addIngredients((ingredient2));
+
+
     }
+
 }

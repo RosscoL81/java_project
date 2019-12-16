@@ -1,6 +1,5 @@
 package com.codeclan.example.restaurantservice.models;
 
-import com.codeclan.example.restaurantservice.enums.Ingredient;
 import com.codeclan.example.restaurantservice.enums.SpiceLevel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -20,10 +19,10 @@ public class Dish {
     private String name;
     @Column(name = "price")
     private double price;
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "dish")
+    @JsonIgnore
+    @OneToMany(mappedBy = "dish")
     @Column(name = "ingredients")
-    private Ingredient ingredients;
+    private List<Ingredient> ingredients;
     @Column(name = "spice_level")
     private SpiceLevel spiceLevel;
     @JsonIgnoreProperties("dish")
@@ -32,10 +31,10 @@ public class Dish {
     private Order order;
 
 
-    public Dish(String name, double price, SpiceLevel spiceLevel, Order order, Ingredient ingredients) {
+    public Dish(String name, double price, SpiceLevel spiceLevel, Order order) {
         this.name = name;
         this.price = price;
-        this.ingredients = ingredients;
+        this.ingredients = new ArrayList<>();
         this.spiceLevel = spiceLevel;
         this.order = order;
     }
@@ -58,12 +57,12 @@ public class Dish {
         this.name = name;
     }
 
-    public Ingredient getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Ingredient ingredients) {
-        this.ingredients = ingredients;
+    public void addIngredients(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
     }
 
     public double getPrice() {
@@ -89,4 +88,6 @@ public class Dish {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+
 }
