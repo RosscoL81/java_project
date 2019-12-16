@@ -1,14 +1,8 @@
 package com.codeclan.example.restaurantservice;
 
 import com.codeclan.example.restaurantservice.enums.SpiceLevel;
-import com.codeclan.example.restaurantservice.models.Customer;
-import com.codeclan.example.restaurantservice.models.Dish;
-import com.codeclan.example.restaurantservice.models.Order;
-import com.codeclan.example.restaurantservice.models.Restaurant;
-import com.codeclan.example.restaurantservice.repositories.CustomerRepository;
-import com.codeclan.example.restaurantservice.repositories.DishRepository;
-import com.codeclan.example.restaurantservice.repositories.OrderRepository;
-import com.codeclan.example.restaurantservice.repositories.RestaurantRepository;
+import com.codeclan.example.restaurantservice.models.*;
+import com.codeclan.example.restaurantservice.repositories.*;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +32,9 @@ class RestaurantserviceApplicationTests {
 
 	@Autowired
 	RestaurantRepository restaurantRepository;
+
+	@Autowired
+	IngredientRepository ingredientRepository;
 
 
 	@Test
@@ -126,5 +123,12 @@ class RestaurantserviceApplicationTests {
 		List<Dish> found = dishRepository.findAll();
 		assertEquals(2, found.size());
 	}
+
+	@Test
+	public void canGetIngredients(){
+		List<Ingredient> found = ingredientRepository.findAll();
+		assertEquals(2, found.size());
+	}
+
 
 }

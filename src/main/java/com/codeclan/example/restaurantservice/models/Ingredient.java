@@ -20,7 +20,7 @@ public class Ingredient {
     private boolean vegetarianFriendly;
     @JsonIgnoreProperties("ingredients")
     @ManyToOne
-    @JoinColumn(name = "dish_id", nullable = false)
+    @JoinColumn(name = "dish_id", nullable = true)
     private Dish dish;
 
     public Ingredient(String name, double price, boolean vegetarianFriendly) {
