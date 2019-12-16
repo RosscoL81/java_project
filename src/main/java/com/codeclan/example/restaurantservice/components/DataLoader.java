@@ -15,6 +15,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -34,13 +39,22 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args){
 
+        DateFormat sfd = new SimpleDateFormat("dd-mm-yyyy hh:mm");
+        String newDate = "24-07-2018 18:00";
+        Date date = null;
+        try {
+            date = sfd.parse(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         Restaurant restaurant1 = new Restaurant("Cari House", 400.00, "1000", "2300");
         restaurantRepository.save(restaurant1);
 
         Customer customer1 = new Customer("Alex B", 3000, restaurant1);
         customerRepository.save(customer1);
 
-        Order order1 = new Order(0, "1500", customer1, restaurant1, true);
+        Order order1 = new Order(0, customer1, date, restaurant1, true);
         orderRepository.save(order1);
 
         Dish dish1 = new Dish("Sausage Curry", 5.00, SpiceLevel.VERYHOT, order1, Ingredient.ASPARAGUS);

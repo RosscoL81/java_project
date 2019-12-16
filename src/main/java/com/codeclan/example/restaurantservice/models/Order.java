@@ -6,7 +6,9 @@ import com.sun.xml.internal.ws.developer.UsesJAXBContext;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAnyAttribute;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,7 +21,7 @@ public class Order {
     @Column(name = "price")
     private double price;
     @Column(name = "collection_time")
-    private String collectionTime;
+    private Date collectionTime;
     @Column(name = "collected")
     private boolean collected;
     @JsonIgnoreProperties("order")
@@ -35,7 +37,7 @@ public class Order {
     private List<Dish> dishes;
 
 
-    public Order(double price, String collectionTime, Customer customer, Restaurant restaurant, boolean collected) {
+    public Order(double price, Customer customer, Date collectionTime, Restaurant restaurant, boolean collected) {
         this.price = 0;
         this.collectionTime = collectionTime;
         this.customer = customer;
@@ -70,11 +72,11 @@ public class Order {
         this.price = total;
     }
 
-    public String getCollectionTime() {
+    public Date getCollectionTime() {
         return collectionTime;
     }
 
-    public void setCollectionTime(String collectionTime) {
+    public void setCollectionTime(Date collectionTime) {
         this.collectionTime = collectionTime;
     }
 

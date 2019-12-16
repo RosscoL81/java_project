@@ -16,6 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -88,7 +92,15 @@ class RestaurantserviceApplicationTests {
 		restaurantRepository.save(restaurant2);
 		Customer customer2 = new Customer("Iona", 4000, restaurant2);
 		customerRepository.save(customer2);
-		Order order1 = new Order(0, "1500", customer2, restaurant2, false);
+		DateFormat sfd = new SimpleDateFormat("dd-mm-yyyy hh:mm");
+		String newDate = "24-07-2018 18:00";
+		Date date = null;
+		try {
+			date = sfd.parse(newDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Order order1 = new Order(0, customer2, date, restaurant2, false);
 		orderRepository.save(order1);
 		List<Order> found = orderRepository.findAll();
 		assertEquals(2, found.size());
@@ -100,11 +112,20 @@ class RestaurantserviceApplicationTests {
 		restaurantRepository.save(restaurant2);
 		Customer customer2 = new Customer("Iona", 4000, restaurant2);
 		customerRepository.save(customer2);
-		Order order1 = new Order(0, "1500", customer2, restaurant2, false);
+		DateFormat sfd = new SimpleDateFormat("dd-mm-yyyy hh:mm");
+		String newDate = "24-07-2018 18:00";
+		Date date = null;
+		try {
+			date = sfd.parse(newDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Order order1 = new Order(0, customer2, date, restaurant2, false);
 		orderRepository.save(order1);
 		Dish dish1 = new Dish("Bean Curry", 7.00, SpiceLevel.MEDIUM, order1, Ingredient.BAMBOOSHOOTS);
 		dishRepository.save(dish1);
 		List<Dish> found = dishRepository.findAll();
 		assertEquals(2, found.size());
 	}
+
 }
