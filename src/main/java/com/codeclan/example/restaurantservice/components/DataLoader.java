@@ -53,16 +53,26 @@ public class DataLoader implements ApplicationRunner {
         Restaurant restaurant1 = new Restaurant("Cari House", 400.00, "1000", "2300");
         restaurantRepository.save(restaurant1);
 
-        Customer customer1 = new Customer("Alex B", 3000, restaurant1);
+        Customer customer1 = new Customer("Alex B", 30.00, restaurant1);
         customerRepository.save(customer1);
+
+        Customer customer2 = new Customer("Cammy", 25.00, restaurant1 );
+        customerRepository.save(customer2);
 
         Order order1 = new Order(0, customer1, date, restaurant1, true);
         orderRepository.save(order1);
+
+        Order order2 = new Order(0, customer2, date, restaurant1, false );
+        orderRepository.save(order2);
 
         Dish dish1 = new Dish("Sausage Curry", 5.00, SpiceLevel.VERYHOT, order1);
         dishRepository.save(dish1);
         dish1.addIngredients(ingredient1);
         dish1.addIngredients((ingredient2));
+
+        Dish dish2 = new Dish("rice", 1.50, SpiceLevel.MILD, order2);
+        dishRepository.save(dish2);
+        dish2.addIngredients((ingredient2));
 
 
     }
