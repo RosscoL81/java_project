@@ -27,7 +27,7 @@ public class Customer {
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    public Customer(String name, int wallet, Restaurant restaurant) {
+    public Customer(String name, double wallet, Restaurant restaurant) {
         this.name = name;
         this.wallet = wallet;
         this.orders = new ArrayList<>();
