@@ -1,12 +1,7 @@
 package com.codeclan.example.restaurantservice.models;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.xml.internal.ws.developer.UsesJAXBContext;
-
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAnyAttribute;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +25,7 @@ public class Order {
     private Customer customer;
     @JsonIgnoreProperties("order")
     @ManyToOne
-    @JoinColumn(name = "restaurant_id", nullable = false)
+    @JoinColumn(name = "restaurant_id", nullable = true)
     private Restaurant restaurant;
     @JsonIgnore
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)

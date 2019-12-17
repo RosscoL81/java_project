@@ -27,7 +27,7 @@ public class Dish {
     private SpiceLevel spiceLevel;
     @JsonIgnoreProperties("dish")
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 
 
