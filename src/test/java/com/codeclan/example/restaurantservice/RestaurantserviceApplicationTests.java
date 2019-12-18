@@ -44,24 +44,24 @@ class RestaurantserviceApplicationTests {
 	@Test
 	public void canGetCustomers(){
 		List<Customer> found = customerRepository.findAll();
-		assertEquals(1, found.size());
+		assertEquals(7, found.size());
 	}
 	@Test
 	public void canGetRestaurants(){
 		List<Restaurant> found = restaurantRepository.findAll();
-		assertEquals(1, found.size());
+		assertEquals(2, found.size());
 	}
 
 	@Test
 	public void canGetDishes(){
 		List<Dish> found = dishRepository.findAll();
-		assertEquals(1, found.size());
+		assertEquals(8, found.size());
 	}
 
 	@Test
 	public void canGetOrders(){
 		List<Order> found = orderRepository.findAll();
-		assertEquals(1, found.size());
+		assertEquals(9, found.size());
 	}
 
 	@Test
@@ -69,7 +69,7 @@ class RestaurantserviceApplicationTests {
 		Restaurant restaurant2 = new Restaurant("The Jolly", 700.00, "1200", "2200");
 		restaurantRepository.save(restaurant2);
 		List<Restaurant> found = restaurantRepository.findAll();
-		assertEquals(2, found.size());
+		assertEquals(3, found.size());
 	}
 
 	@Test
@@ -79,7 +79,7 @@ class RestaurantserviceApplicationTests {
 		Customer customer2 = new Customer("Iona", 4000, restaurant2);
 		customerRepository.save(customer2);
 		List<Customer> found = customerRepository.findAll();
-		assertEquals(2, found.size());
+		assertEquals(8, found.size());
 	}
 
 	@Test
@@ -91,7 +91,7 @@ class RestaurantserviceApplicationTests {
 		Order order1 = new Order(0, customer2, "1200", restaurant2, false);
 		orderRepository.save(order1);
 		List<Order> found = orderRepository.findAll();
-		assertEquals(2, found.size());
+		assertEquals(9, found.size());
 	}
 
 	@Test
@@ -105,13 +105,13 @@ class RestaurantserviceApplicationTests {
 		Dish dish1 = new Dish("Bean Curry", 7.00, SpiceLevel.MEDIUM, order1);
 		dishRepository.save(dish1);
 		List<Dish> found = dishRepository.findAll();
-		assertEquals(2, found.size());
+		assertEquals(9, found.size());
 	}
 
 	@Test
 	public void canGetIngredients(){
 		List<Ingredient> found = ingredientRepository.findAll();
-		assertEquals(2, found.size());
+		assertEquals(8, found.size());
 	}
 
 
