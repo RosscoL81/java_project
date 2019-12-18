@@ -13,7 +13,7 @@ import java.util.List;
 public interface EmbedRestaurantAndCustomer {
     Long getId();
     Double getPrice();
-    Date getCollectionTime();
+    String getCollectionTime();
     Customer getCustomer();
     Restaurant getRestaurant();
     List<Dish> getDishes();
