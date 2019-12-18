@@ -106,17 +106,17 @@ public class DataLoader implements ApplicationRunner {
         Order order3 = new Order(0, customer3, date, restaurant1, true );
         orderRepository.save(order3);
 
-        Order order4 = new Order(0, customer4, date, restaurant1, false );
+        Order order4 = new Order(1, customer4, date, restaurant1, false );
         orderRepository.save(order4);
 
-        Order order5 = new Order(0, customer5, date, restaurant1, false );
+        Order order5 = new Order(4, customer5, date, restaurant1, false );
         orderRepository.save(order5);
 
         Order order6 = new Order(0, customer5, date, restaurant1, false );
-        orderRepository.save(order5);
+        orderRepository.save(order6);
 
-        Order order7 = new Order(0, customer4, date, restaurant1, false );
-        orderRepository.save(order5);
+        Order order7 = new Order(7, customer4, date, restaurant1, false );
+        orderRepository.save(order7);
 
         Order order8 = new Order(0, customer1, date, restaurant1, false );
         orderRepository.save(order8);
