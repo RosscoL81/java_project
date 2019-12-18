@@ -16,7 +16,7 @@ public class Order {
     @Column(name = "price")
     private double price;
     @Column(name = "collection_time")
-    private Date collectionTime;
+    private String collectionTime;
     @Column(name = "collected")
     private boolean collected;
     @JsonIgnoreProperties("order")
@@ -32,7 +32,7 @@ public class Order {
     private List<Dish> dishes;
 
 
-    public Order(double price, Customer customer, Date collectionTime, Restaurant restaurant, boolean collected) {
+    public Order(double price, Customer customer, String collectionTime, Restaurant restaurant, boolean collected) {
         this.price = 0;
         this.collectionTime = collectionTime;
         this.customer = customer;
@@ -67,11 +67,11 @@ public class Order {
         this.price = total;
     }
 
-    public Date getCollectionTime() {
+    public String getCollectionTime() {
         return collectionTime;
     }
 
-    public void setCollectionTime(Date collectionTime) {
+    public void setCollectionTime(String collectionTime) {
         this.collectionTime = collectionTime;
     }
 

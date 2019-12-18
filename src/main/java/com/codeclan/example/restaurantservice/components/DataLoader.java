@@ -35,24 +35,24 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args){
 
-        DateFormat sfd = new SimpleDateFormat("dd-mm-yyyy hh:mm");
-        String newDate = "24-07-2018 18:00";
-        Date date = null;
-        try {
-            date = sfd.parse(newDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        DateFormat sfd = new SimpleDateFormat("dd-mm-yyyy hh:mm");
+//        String newDate = "24-07-2018 18:00";
+//        Date date = null;
+//        try {
+//            date = sfd.parse(newDate);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
         // ingredient seeds
 
-        Ingredient ingredient1 = new Ingredient("sausage", 5.00, false);
+        Ingredient ingredient1 = new Ingredient("Sausage", 5.00, false);
         ingredientRepository.save(ingredient1);
 
-        Ingredient ingredient2 = new Ingredient("whiteRice", 1.00, true);
+        Ingredient ingredient2 = new Ingredient("White rice", 1.00, true);
         ingredientRepository.save(ingredient2);
 
-        Ingredient ingredient3 = new Ingredient("brownRice", 1.00, true);
+        Ingredient ingredient3 = new Ingredient("Brown rice", 1.00, true);
         ingredientRepository.save(ingredient3);
 
         Ingredient ingredient4 = new Ingredient("Chicken cutlet", 3.00, false);
@@ -97,28 +97,28 @@ public class DataLoader implements ApplicationRunner {
 
         // order seeds
 
-        Order order1 = new Order(0, customer1, date, restaurant1, true);
+        Order order1 = new Order(0, customer1, "1300", restaurant1, true);
         orderRepository.save(order1);
 
-        Order order2 = new Order(0, customer2, date, restaurant1, false );
+        Order order2 = new Order(0, customer2, "1500", restaurant1, false );
         orderRepository.save(order2);
 
-        Order order3 = new Order(0, customer3, date, restaurant1, true );
+        Order order3 = new Order(0, customer3, "1700", restaurant1, true );
         orderRepository.save(order3);
 
-        Order order4 = new Order(1, customer4, date, restaurant1, false );
+        Order order4 = new Order(1, customer4, "1550", restaurant1, false );
         orderRepository.save(order4);
 
-        Order order5 = new Order(4, customer5, date, restaurant1, false );
+        Order order5 = new Order(4, customer5, "1750", restaurant1, false );
         orderRepository.save(order5);
 
-        Order order6 = new Order(0, customer5, date, restaurant1, false );
+        Order order6 = new Order(0, customer5, "1830", restaurant1, false );
         orderRepository.save(order6);
 
-        Order order7 = new Order(7, customer4, date, restaurant1, false );
+        Order order7 = new Order(7, customer4, "1900", restaurant1, false );
         orderRepository.save(order7);
 
-        Order order8 = new Order(0, customer1, date, restaurant1, false );
+        Order order8 = new Order(0, customer1, "2215", restaurant1, false );
         orderRepository.save(order8);
 
         // dish seeds
@@ -128,7 +128,7 @@ public class DataLoader implements ApplicationRunner {
         dish1.addIngredients(ingredient1);
         dish1.addIngredients((ingredient2));
 
-        Dish dish2 = new Dish("rice", 1.50, SpiceLevel.MILD, order2);
+        Dish dish2 = new Dish("Rice", 1.50, SpiceLevel.MILD, order2);
         dishRepository.save(dish2);
         dish2.addIngredients((ingredient2));
 
