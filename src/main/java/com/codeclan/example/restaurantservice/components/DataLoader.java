@@ -97,28 +97,28 @@ public class DataLoader implements ApplicationRunner {
 
         // order seeds
 
-        Order order1 = new Order(0, customer1, "1300", restaurant1, true);
+        Order order1 = new Order(10.00, customer1, "1300", restaurant1, true);
         orderRepository.save(order1);
 
-        Order order2 = new Order(0, customer2, "1500", restaurant1, false );
+        Order order2 = new Order(12.50, customer2, "1500", restaurant1, false );
         orderRepository.save(order2);
 
-        Order order3 = new Order(0, customer3, "1700", restaurant1, true );
+        Order order3 = new Order(24.25, customer3, "1700", restaurant1, true );
         orderRepository.save(order3);
 
-        Order order4 = new Order(1, customer4, "1550", restaurant1, false );
+        Order order4 = new Order(30.00, customer4, "1550", restaurant1, false );
         orderRepository.save(order4);
 
-        Order order5 = new Order(4, customer5, "1750", restaurant1, false );
+        Order order5 = new Order(17.50, customer5, "1750", restaurant1, false );
         orderRepository.save(order5);
 
-        Order order6 = new Order(0, customer5, "1830", restaurant1, false );
+        Order order6 = new Order(19.99, customer5, "1830", restaurant1, false );
         orderRepository.save(order6);
 
-        Order order7 = new Order(7, customer4, "1900", restaurant1, false );
+        Order order7 = new Order(7.50, customer4, "1900", restaurant1, false );
         orderRepository.save(order7);
 
-        Order order8 = new Order(0, customer1, "2215", restaurant1, false );
+        Order order8 = new Order(12.75, customer1, "2215", restaurant1, false );
         orderRepository.save(order8);
 
         // dish seeds
